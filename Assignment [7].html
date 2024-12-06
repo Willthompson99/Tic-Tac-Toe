@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Includes the Prism.js library for syntax highlighting when writing codes -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-java.min.js"></script>
+
+  <title>Assignment [7]</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap">
+
+  <style>
+        body 
+        {
+            font-family: 'Noto Sans TC', 'Microsoft JhengHei', 'Ubuntu', 'Nunito', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #343a40;
+        }
+        header, footer 
+        {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        header h1, footer p 
+        {
+            margin: 0;
+        }
+        section 
+        {
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 1000px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            font-size: 20px
+        }
+        h2 
+        {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 0.5rem;
+        }
+        h3 
+        {
+            color: #ff0000;
+            border-bottom: 2px solid #ff0000;
+            padding-bottom: 0.5rem;
+        }
+        .table-container 
+        {
+            overflow-x: auto;
+            text-align: justify;
+        }
+        table 
+        {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        th, td 
+        {
+            padding: 0.75rem;
+            text-align: center; /* Center the text */
+            border: 1px solid #dee2e6;
+        }
+        th 
+        {
+            background-color: #007bff;
+            color: #fff;
+        }
+        ul 
+        {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+        }
+        ul ul 
+        {
+            list-style-type: circle;
+        }
+        a 
+        {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover 
+        {
+            text-decoration: underline;
+        }
+        .highlighted 
+        {
+            background-color: #ffeb3b;
+            padding: 0 0.25rem;
+        }
+        .colored-word 
+        {
+            color: #dc3545;
+        }
+        .center-container 
+        {
+            text-align: center;
+        }
+        .text-container 
+        {
+            text-align: justify;
+            margin-top: 1rem;
+        }
+        .demo-link 
+        {
+            display: block;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Below is for styling the class diagrams */
+        .class-diagram 
+        {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .class-box 
+        {
+            border: 1px solid #000;
+            margin: 20px;
+            padding: 10px;
+            width: 900px;
+            text-align: center;
+        }
+        .class-box h2, .class-box h3 
+        {
+            margin: 0;
+            padding: 5px;
+            background-color: #f0f0f0;
+        }
+        .class-box ul 
+        {
+            list-style-type: none;
+            padding: 0;
+            font-size: 18px;            /* Adjust font size for list items inside class boxes */
+            text-align: left;
+        }
+        .class-box ul li 
+        {
+            padding: 5px 0;
+        }
+        .arrow 
+        {
+            width: 0;   /* Ensure the arrow is a line */
+            height: 0px;
+            border-style: solid;
+            border-width: 10px 10px 0 10px; /* Adjust thickness of the arrow and anchor as needed */
+            border-color: #000 transparent transparent transparent; /* Adjust color to match your design */
+            margin: 0 auto; /* Center horizontally */
+            transform: rotate(180deg); 
+         }
+  </style>
+</head>
+
+<body>
+    <header>
+        <div class="center-container">
+            <h1>Tic Tac Toe Game</h1>
+        </div>
+    </header>
+    
+    <main>
+        <section id="Overview">
+            <h2>Overview</h2>
+                <div class="text-container">
+                    <p>The Tic Tac Toe game assignment involves creating a simple graphical Tic Tac Toe game using Java and the <strong>Swing</strong> framework. The game is structured within the <strong>TicTacToe</strong> class, which extends <strong>JFrame</strong> and implements <strong>ActionListener</strong>. The user interface includes a 3x3 grid of buttons for the game board, a label to display the current player's turn, and dialog boxes to input player names. Players take turns clicking on the grid buttons to mark their moves. The game checks for a win or draw condition after each move and displays an appropriate message using <strong>JOptionPane</strong>. The game ends when a player wins or all cells are filled, resulting in a draw. The program demonstrates key aspects of event-driven programming, user interaction, and basic game logic implementation in Java.</p>
+                </div>
+        </section>
+        
+        <section id="Class">
+            <h2>Class</h2>
+                <div class="class-diagram text-container">
+                        <div class="class-box">
+                            <h2>TicTacToe</h2>
+                            <h3>Attributes</h3>
+                                <ul>
+                                    <li>- player1: <span style="color: blue;">String</span></li>
+                                    <li>- player2: <span style="color: blue;">String</span></li>
+                                    <li>- turnLabel: <span style="color: blue;">JLabel</span></li>
+                                </ul>
+                            <h3>Methods</h3>
+                                <ul>
+                                    <li>+ <span style="color: brown;">TicTacToe</span>()</li>
+                                    <li>+ <span style="color: brown;">actionPerformed</span>(e: <span style="color: blue;">ActionEvent</span>):<span style="color: blue;">void</span></li>
+                                    <li>+ <span style="color: brown;">checkWin</span>(currentPlayer: <span style="color: blue;">String</span>): <span style="color: blue;">boolean</span></li>
+                                    <li>+ <span style="color: brown;">checkDraw</span>(): <span style="color: blue;">boolean</span></li>
+                                    <li>+ <span style="color: brown;">main</span>(args: <span style="color: blue;">String</span>[]): <span style="color: blue;">void</span></li>
+                                </ul>
+                        </div>
+                    <p><strong>Note</strong>: You may choose to add additional attributes (instance fields) if needed. The provided template is designed to be simple and easy to follow throughout the development process.</p>                </div>
+        </section>
+    
+        <section id="Code Template">
+            <h2>Code Template</h2>
+                <div class="text-container">
+                    <p>Copy the following Java code template to your IDE and complete the provided code:</p>
+                    <pre><code class="language-java">/*****************************************************************************************
+* TicTacToe is a graphical representation of the classic Tic Tac Toe game implemented
+* using Java Swing. The game allows two players to play against each other by taking 
+* turns to mark cells on a 3x3 grid until one player wins or the game results in a draw.
+******************************************************************************************/
+
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+
+import java.awt.GridLayout;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class TicTacToe extends JFrame implements ActionListener 
+{
+    // ************ Static Fields ************* //
+    /** Name of player 1 */
+                            
+    /** Name of player 2 */
+                                                
+    /** Label to display current player's turn */
+    
+    // ************ Static Fields ************* //
+    /** 3x3 matrix of buttons representing the game board */
+    private static JButton[][] buttons = new JButton[3][3];    
+
+    /**
+    * A constructor to construct a TicTacToe game window, initializes the game board, and prompts for player names.
+    */
+    public TicTacToe() 
+    {
+        // Set the title of the game window
+        
+        // Set the closing operation of the game window
+
+        // Set the size of the game window to 300 * 350
+
+        // Set the layout of the game window
+
+        // Create a panel for player's turn label and add it to the NORTH zone of the frame
+        
+
+        // Create a panel for game board and add it to the CENTER zone of the frame
+        
+
+        // Set the visibility of the frame to 'true'
+
+        // Get player names through Dialog container
+        
+        
+        // Set the text of the turnLabel to hold the name of player1 at the beginning of the game  
+
+    }
+
+    /**
+    * An overriden instance method to handle button click events, updates the game state, checks for win/draw conditions, and switches the current player.
+    *
+    * @param e the action event triggered by clicking a button
+    */
+    
+
+    /**
+    * An instance method to check if the current player has won the game.
+    *
+    * @param playerSymbol the symbol representing the current player
+    * @return true if the player has won, false otherwise
+    */
+    
+
+    /**
+    * An instance method to check if the game is a draw (i.e., all cells are filled and no player has won).
+    *
+    * @return true if the game is a draw, false otherwise
+    */
+    
+
+    /**
+    * Main method to start the TicTacToe game.
+    *
+    * @param args command-line arguments (not used)
+    */
+    public static void main(String[] args) 
+    {
+        // Instantiate the TicTacToe class
+        new TicTacToe();
+    }
+}</code></pre>
+                </div>
+        </section>
+
+        <section>
+            <h2>Sample Output</h2>
+                <div class="text-container">
+                    <p>Click <a href="https://cs.okstate.edu/~aalthou/AssignmentDemo/Assignment[7].mp4">here</a> to watch a short demonstration of the Tic Tac Toe Game.</p>
+                </div>
+        </section>
+
+        <section id="Submission">
+            <h2>Submission</h2>
+               <div class="text-container">
+                    <ul>
+                        <li>Complete the implementation and submit the <span class="colored-word">TicTacToe.java</span> file on Canvas by <strong>Friday, November 22, 2024, 11:59 pm</strong>. Refer to the syllabus for the late submission policy.</li>
+                        <li>Ensure your code includes your name and course in the documentation comment section.</li>
+                        <li>Adhere to best programming practices and use the provided programming template to complete the task.</li>
+                        <li>The rubric table below is used for grading criteria:</li>
+                            <div class="table-container">
+                                <table>
+                                    <tr>
+                                        <th>Points</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td>-2 pt</td>
+                                        <td>If failure to complete a single method</td>
+                                    </tr>
+                                    <tr>
+                                        <td>-1 pt</td>
+                                        <td>If failure to call a method</td>
+                                    </tr>
+                                </table>
+                            </div>
+                    </ul>
+                </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Oklahoma State University -  Department of Computer Science</p>
+    </footer>
+</body>
+</html>
